@@ -39,4 +39,4 @@ jobs:
       - run: ruff check .
       - run: mypy src
       - run: python -m build --wheel --no-isolation
-      - run: pip-audit --no-deps
+      - run: pip-audit -r requirements.txt --no-deps

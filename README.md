@@ -73,7 +73,9 @@ ruff check .
 mypy src
 ```
 
-The project uses a `src/` layout, type annotations, immutable state records, and a minimal standard-library runtime surface. GitHub Actions runs the test matrix on supported Python versions and checks code quality.
+The project uses a `src/` layout, type annotations, immutable state records, and a minimal standard-library runtime surface. GitHub Actions runs the test matrix on supported Python versions, enforces at least 95% test coverage, checks code quality and strict types, builds a wheel, and audits the dependency environment. Dependabot monitors Python and Actions updates. Version tags matching `v*.*.*` trigger a release build with SHA-256 checksums.
+
+Repository governance is documented in [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Issue forms, CODEOWNERS, Dependabot configuration, and automatic branch cleanup are enabled. Branch protection is unavailable for this private repository on the current GitHub plan; treat `main` as protected by policy and use pull requests whenever the plan permits it.
 
 ## Security considerations
 
