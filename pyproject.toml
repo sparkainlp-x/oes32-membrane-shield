@@ -23,11 +23,19 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[project.urls]
+Homepage = "https://github.com/sparkainlp-x/oes32-membrane-shield"
+Repository = "https://github.com/sparkainlp-x/oes32-membrane-shield"
+Issues = "https://github.com/sparkainlp-x/oes32-membrane-shield/issues"
+
 [project.scripts]
 oes32-simulate = "oes32_membrane_shield.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+oes32_membrane_shield = ["py.typed"]
 
 [tool.pytest.ini_options]
 addopts = "-q"
