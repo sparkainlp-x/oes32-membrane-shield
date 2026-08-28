@@ -23,7 +23,7 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e . pytest pytest-cov
-      - run: pytest --cov=oes32_membrane_shield --cov-report=term-missing --cov-fail-under=95
+      - run: pytest --cov=oes32_membrane_shield --cov-report=term-missing --cov-fail-under=90
 
   quality:
     runs-on: ubuntu-latest

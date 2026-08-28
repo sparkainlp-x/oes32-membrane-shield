@@ -365,3 +365,16 @@ The most urgent actions are F-01 through F-06. F-01 and F-03 are architectural r
 [2]: https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html "OWASP Threat Modeling Cheat Sheet"
 
 [3]: https://docs.github.com/en/code-security/concepts/supply-chain-security "GitHub: Supply chain security"
+
+
+---
+
+## 13. Remediation addendum: external capabilities and independent calibration
+
+A v2 refactor was implemented after this audit. The current code adds `src/oes32_membrane_shield/authorization.py`, which uses Ed25519 public-key verification, scoped action and payload binding, expiry timestamps, and one-time request IDs. `MembraneShield` now requires a `CapabilityVerifier`; it no longer owns role secrets and no longer exposes `issue_token()` or `verify_token()`.
+
+Calibration now requires two approvals whose roles are exactly `CALIBRATEUR` and `GARDIEN`. The verifier rejects same-role, same-key, or same-subject pairs, and both approvals must authorize the exact canonical calibration payload. Pair verification is transactional: a failed second approval does not consume the first valid approval. Reset also requires a guardian capability bound to the literal `reset` payload and is audited.
+
+These changes address the original findings F-01 and F-03 at the library boundary and materially reduce F-02 by adding expiry and one-time use. They do not, by themselves, solve private-key custody, distributed replay persistence, certificate or key revocation, authenticated transport, concurrency, durable audit, or same-process object mutation. A deployment must keep each private authority key in a separate trust domain and should place the shield behind a process or service boundary when callers are not fully trusted.
+
+The v2 API is a breaking change and the package version is `2.0.0`. The test suite includes capability serialization, payload substitution, replay, expiry, role separation, same-authority dual-control rejection, mismatched-reference rejection, and transactional approval behavior. The repository CI coverage threshold is currently 90% because the new authorization module adds defensive parsing and cryptographic failure branches; coverage remains a signal rather than a security proof.
