@@ -1,0 +1,41 @@
+{
+  "upload_type": "software",
+  "title": "OES-32 Membrane Shield: capability-gated 32-slot state machine with dual-approval calibration",
+  "description": "<p>Python reference implementation of a state-machine contract for externally authorized updates to a 32-slot state vector. The shield verifies short-lived, payload-bound Ed25519 capabilities against public keys (private keys never enter the shield), requires independent approvals from distinct CALIBRATEUR and GARDIEN authorities for calibration, rejects and latches on a max-absolute residual strictly greater than τ (the ADR-001 rule; default τ = 0.08, Profile A sidecar), applies EVEN / ODD / FOLD8 symmetry sectors, and keeps a bounded audit ring.</p><p><strong>Evidence tags.</strong> Unit, end-to-end and deterministic fuzz tests use <strong>SYNTHETIC</strong> inputs. Simulation output is SYNTHETIC; latency figures are machine-dependent diagnostics. Independent security review of v2: <strong>UNRUN</strong> (the included audit covers the superseded v1 HMAC design only).</p><p><strong>Relationship to ADR-001.</strong> The residual rule matches <a href=\"https://github.com/sparkainlp-x/oes32-residual/tree/b77b61254f15778c6ae221843dceac7a8571158e\">oes32-residual@b77b612</a>; τ and sectors follow the Profile A sidecar in oes32_engine.</p><p><strong>Scope and limits.</strong> Research software. Not certified safety-critical software, not a key-management or identity system, not hardware, field or medical software. No production-readiness claim is made.</p><p>Evidence tags follow <a href=\"https://github.com/sparkainlp-x/.github#evidence-tags\">sparkainlp-x/.github</a> (SYNTHETIC / REPORTED / TARGET / UNRUN).</p>",
+  "creators": [
+    {
+      "name": "Brisson, Jean-François",
+      "affiliation": "Spark AI NLP"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "OES-32",
+    "state machine",
+    "Ed25519",
+    "capabilities",
+    "dual control",
+    "residual latch",
+    "Python",
+    "research software"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sparkainlp-x/oes32-membrane-shield",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.5281/zenodo.22985520",
+      "relation": "references",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.5281/zenodo.22985523",
+      "relation": "references",
+      "resource_type": "software"
+    }
+  ],
+  "language": "eng"
+}
