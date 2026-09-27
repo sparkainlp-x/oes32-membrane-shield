@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["cryptography>=50,<51"]
 license = { text = "MIT" }
-authors = [{ name = "Manus AI" }]
+authors = [{ name = "Jean-François Brisson" }]
 keywords = ["state-machine", "authentication", "symmetry", "circuit-breaker"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
