@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. Test and simulation inputs are SYNTHETIC; an independent security review of v2 is UNRUN."
+title: "OES-32 Membrane Shield: capability-gated 32-slot state machine with dual-approval calibration"
+type: software
+authors:
+  - family-names: "Brisson"
+    given-names: "Jean-François"
+    affiliation: "Spark AI NLP"
+repository-code: "https://github.com/sparkainlp-x/oes32-membrane-shield"
+url: "https://sparkainlpx.xyz"
+license: MIT
+version: "2.0.0"
+date-released: "2026-09-27"
+abstract: >-
+  Python reference implementation of a state-machine contract for externally
+  authorized updates to a 32-slot state vector: short-lived, payload-bound
+  Ed25519 capabilities verified against public keys, independent dual approval
+  for calibration, a max-absolute residual latch (ADR-001 rule, strict > tau),
+  EVEN/ODD/FOLD8 symmetry sectors, and a bounded audit ring. Research software;
+  SYNTHETIC test inputs; not certified safety software.
+keywords:
+  - oes32
+  - state-machine
+  - ed25519
+  - capabilities
+  - dual-control
+  - research-software

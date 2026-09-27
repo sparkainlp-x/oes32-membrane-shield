@@ -8,7 +8,8 @@ This repository is a reference implementation of an authenticated 32-slot state 
 
 | Version | Support |
 | --- | --- |
-| `1.x` | Security fixes and corrective maintenance while the project is actively maintained. |
+| `2.x` | Security fixes and corrective maintenance while the project is actively maintained. |
+| `1.x` (HMAC tokens) | Unsupported. Upgrade to 2.x. |
 | Older versions | No guaranteed security support. Upgrade before reporting a suspected issue. |
 
 ## Reporting a vulnerability
@@ -19,7 +20,7 @@ We will acknowledge a report when practicable, investigate the impact, and coord
 
 ## Security design limitations
 
-The current library generates HMAC secrets in process memory. Tokens are process-local, do not expire, are not revocable independently, and are not suitable as service-to-service identity. Deployments requiring real authorization should integrate an external identity provider, a dedicated secret-management system, token rotation, expiration, revocation, replay policy, and authenticated transport.
+Version 2 verifies externally issued Ed25519 capabilities; the shield holds public keys only. Capabilities are scoped to an action and exact payload, expire, and are single-use **within one verifier instance**: replay state is in memory and is lost on restart. Deployments requiring real authorization still need protected private-key storage in separate trust domains, key rotation and revocation, durable replay state, authenticated transport, and an external identity policy. The historical [SECURITY_AUDIT_REPORT.md](SECURITY_AUDIT_REPORT.md) covers the superseded v1 HMAC design only.
 
 The audit ring is bounded and local to one process. It is not tamper-evident, durable, centralized, or a compliance record. Applications requiring forensic evidence should forward sanitized events to an append-only, access-controlled logging system.
 

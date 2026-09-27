@@ -1,3 +1,5 @@
+> **Historical document (v1).** This assessment reviewed commit `44969ea` (27 August 2026), which used in-process, non-expiring **HMAC tokens**. Version 2.0.0 replaced that model with externally issued, short-lived, payload-bound **Ed25519 capabilities** and independent dual approval (see the README section "Version 2 authorization model"). Findings about HMAC token minting, expiry and revocation apply to v1 only. The v2 design has **not** been independently re-assessed; this report is kept for provenance and is not a certification or penetration test.
+
 # OES-32 Membrane Shield Protocol
 ## Threat Modeling and Security Architecture Audit
 

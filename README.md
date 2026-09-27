@@ -1,5 +1,9 @@
 # OES-32 Membrane Shield
 
+[![CI](https://github.com/sparkainlp-x/oes32-membrane-shield/actions/workflows/ci.yml/badge.svg)](https://github.com/sparkainlp-x/oes32-membrane-shield/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status: research prototype](https://img.shields.io/badge/status-research%20prototype-orange.svg)](#scope-and-evidence)
+
 A Python library for evaluating externally authorized updates to a 32-slot state vector. The shield verifies short-lived Ed25519 capabilities issued outside the enforcement object, requires independent dual approval for calibration, applies residual-based circuit breaking and configurable symmetry sectors, and retains a bounded diagnostic audit ring.
 
 > This project is a reference implementation of a state-machine contract. It is not a substitute for a production security review, a hardware safety case, or a cryptographic key-management system.
@@ -92,7 +96,7 @@ mypy src
 
 The project uses a `src/` layout, type annotations, immutable state records, external public-key authorization, and a small cryptography runtime surface. GitHub Actions runs the test matrix on supported Python versions, enforces at least 90% test coverage, checks code quality and strict types, builds a wheel, and audits the dependency environment. Dependabot monitors Python and Actions updates. Version tags matching `v*.*.*` trigger a release build with SHA-256 checksums.
 
-Repository governance is documented in [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Issue forms, CODEOWNERS, Dependabot configuration, and automatic branch cleanup are enabled. Branch protection is unavailable for this private repository on the current GitHub plan; treat `main` as protected by policy and use pull requests whenever the plan permits it.
+Repository governance is documented in [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Issue forms, CODEOWNERS, Dependabot configuration, and automatic branch cleanup are enabled. `main` is protected: changes arrive through pull requests with required CI checks and linear history, and force pushes are blocked.
 
 ## Security considerations
 
@@ -102,6 +106,23 @@ Calibration approvals are cryptographically independent only when operators actu
 
 The implementation is intentionally deterministic in its state transitions, but it does not claim timing-channel resistance for the entire application. Review deployment, logging, memory handling, and authorization policy before relying on this code in a sensitive environment.
 
+## Scope and evidence
+
+| Item | Status |
+| --- | --- |
+| State-machine behaviour (residual latch, sectors, dual approval, capability checks) | Unit, end-to-end and deterministic fuzz tests; **SYNTHETIC** inputs |
+| Simulation output (`oes32-simulate`) | **SYNTHETIC**; latency figures are machine-dependent diagnostics, not benchmarks |
+| Independent security review of v2 | **UNRUN** (the [historical audit](SECURITY_AUDIT_REPORT.md) covers v1 only) |
+| Hardware, field, medical or safety-certified use | **Not claimed** |
+
+## Relationship to the OES-32 family
+
+The residual is the maximum absolute component difference, and a residual strictly greater than `tau` is rejected and latches. This matches the normative definition in [oes32-residual](https://github.com/sparkainlp-x/oes32-residual) (ADR-001). The default `tau = 0.08` and the `EVEN` / `ODD` / `FOLD8` sectors correspond to the Profile A sidecar documented in [oes32_engine](https://github.com/sparkainlp-x/oes32_engine). This repository adds the authorization layer (Ed25519 capabilities, dual-approval calibration, audit ring) around that contract.
+
+## Citation
+
+See [CITATION.cff](CITATION.cff). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
-Released under the MIT License. See [LICENSE](LICENSE).
+Released under the MIT License. See [LICENSE](LICENSE). Author: Jean-François Brisson / Spark AI NLP, https://sparkainlpx.xyz
