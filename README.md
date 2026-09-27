@@ -3,6 +3,7 @@
 [![CI](https://github.com/sparkainlp-x/oes32-membrane-shield/actions/workflows/ci.yml/badge.svg)](https://github.com/sparkainlp-x/oes32-membrane-shield/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Status: research prototype](https://img.shields.io/badge/status-research%20prototype-orange.svg)](#scope-and-evidence)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22999276.svg)](https://doi.org/10.5281/zenodo.22999276)
 
 A Python library for evaluating externally authorized updates to a 32-slot state vector. The shield verifies short-lived Ed25519 capabilities issued outside the enforcement object, requires independent dual approval for calibration, applies residual-based circuit breaking and configurable symmetry sectors, and retains a bounded diagnostic audit ring.
 
@@ -121,7 +122,7 @@ The residual is the maximum absolute component difference, and a residual strict
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+See [CITATION.cff](CITATION.cff). Archived on Zenodo: concept DOI [10.5281/zenodo.22999276](https://doi.org/10.5281/zenodo.22999276) (all versions); v2.0.0: [10.5281/zenodo.22999277](https://doi.org/10.5281/zenodo.22999277). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
