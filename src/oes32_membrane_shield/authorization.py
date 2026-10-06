@@ -25,6 +25,8 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (
     Ed25519PublicKey,
 )
 
+from ._ed25519 import has_acceptable_r, is_acceptable_public_key
+
 
 class Role(str, Enum):
     """Roles recognized by the authorization policy."""
@@ -125,6 +127,13 @@ class AuthorityKey:
     key_id: str
     role: Role
     public_key: bytes
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.public_key, bytes) or not is_acceptable_public_key(self.public_key):
+            raise AuthorizationError(
+                "authority public key rejected: must be a canonical 32-byte Ed25519 point "
+                "that is not of small order"
+            )
 
 
 class CapabilityIssuer:
@@ -233,6 +242,8 @@ class CapabilityVerifier:
             raise AuthorizationError("capability expired")
         if capability.request_id in self._used_request_ids:
             raise AuthorizationError("capability replayed")
+        if not has_acceptable_r(capability.signature):
+            raise AuthorizationError("invalid capability signature")
         try:
             Ed25519PublicKey.from_public_bytes(authority.public_key).verify(
                 capability.signature, capability._unsigned_payload()
