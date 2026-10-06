@@ -122,7 +122,7 @@ The residual is the maximum absolute component difference, and a residual strict
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff). Archived on Zenodo: concept DOI [10.5281/zenodo.22999276](https://doi.org/10.5281/zenodo.22999276) (all versions); v2.0.0: [10.5281/zenodo.22999277](https://doi.org/10.5281/zenodo.22999277). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+See [CITATION.cff](CITATION.cff). Archived on Zenodo: concept DOI [10.5281/zenodo.22999276](https://doi.org/10.5281/zenodo.22999276) (all versions); v2.0.1: [10.5281/zenodo.23187289](https://doi.org/10.5281/zenodo.23187289); v2.0.0: [10.5281/zenodo.22999277](https://doi.org/10.5281/zenodo.22999277). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

@@ -18,6 +18,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22999277"
     description: "Version DOI for v2.0.0 (Zenodo)"
+  - type: doi
+    value: "10.5281/zenodo.23187289"
+    description: "Version DOI for v2.0.1 (Zenodo)"
 version: "2.0.1"
 date-released: "2026-10-06"
 abstract: >-
