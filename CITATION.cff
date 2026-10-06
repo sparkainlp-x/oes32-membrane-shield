@@ -18,8 +18,8 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22999277"
     description: "Version DOI for v2.0.0 (Zenodo)"
-version: "2.0.0"
-date-released: "2026-09-27"
+version: "2.0.1"
+date-released: "2026-10-06"
 abstract: >-
   Python reference implementation of a state-machine contract for externally
   authorized updates to a 32-slot state vector: short-lived, payload-bound
